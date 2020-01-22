@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
+import Axios from 'axios';
 
 function CreateArea(props){
     const [note,setNote]=useState({title:'',content:''});
@@ -22,7 +23,7 @@ function handleSubmit(e){
     e.preventDefault();
     if(!note){return;}
     else {props.addNote(note);}
-    
+   
     setNote({title:'',content:''});
 
 }

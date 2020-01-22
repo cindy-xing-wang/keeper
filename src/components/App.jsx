@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
 import Header from './Header';
 import CreateArea from './CreateArea';
 import Note from './Note';
 import Footer from './Footer';
+import axios from 'axios';
+
 
 function App() {
  const [notes, setNotes]= useState([]);   
@@ -10,6 +13,9 @@ function App() {
         setNotes(pre=>
             [...pre, note]
         );
+        axios.post('http://localhost:3000',notes)
+        .then(res =>console.log(res.data));
+        
     }
     
     function onComplete(index){
@@ -31,7 +37,7 @@ function App() {
     }
 
     return (
-        <div>
+         <Router>
             <Header />
             <CreateArea addNote={addNote} />
             {notes.map((noteItem,index)=>(
@@ -48,7 +54,7 @@ function App() {
             ))}
             
             <Footer />
-        </div>
+       </Router> 
     );
 }
 
