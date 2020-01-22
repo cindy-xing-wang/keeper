@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import Header from './Header';
 import CreateArea from './CreateArea';
 import Note from './Note';
 import Footer from './Footer';
-import axios from 'axios';
 
 
 function App() {
@@ -13,9 +12,6 @@ function App() {
         setNotes(pre=>
             [...pre, note]
         );
-        axios.post('http://localhost:3000',notes)
-        .then(res =>console.log(res.data));
-        
     }
     
     function onComplete(index){
